@@ -1,5 +1,5 @@
 require 'pry'
-
+class Cli 
     
     def introduction
 puts <<-LIST
@@ -41,5 +41,4 @@ puts "or type exit to exit, or list to list again."
 end
 
 
-
-
+end 

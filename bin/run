@@ -2,4 +2,4 @@
 
 require_relative '../config/environment'
 
-# Stats::CLi.new.introduction 
+CLi.new.introduction 
