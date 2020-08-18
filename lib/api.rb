@@ -23,7 +23,8 @@ end
     request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
     
     response = http.request(request)
-    puts response.read_body
+   # puts response.read_body
+
     end
 
     def italy_api
@@ -74,5 +75,8 @@ request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
 response = http.request(request)
 puts response.read_body
 end
+
+
+
 
 end 

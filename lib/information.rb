@@ -1,14 +1,19 @@
 class Information 
 
-    attr_accessor :name, :count, :deaths
+attr_accessor :name, :info 
 
-    @@all = []
+def run(country_name)
+    @name = country_name
+    Api.new(country_name).country_api
 
-    def initalize(api_hash)
-        @name = name
-        @count = count
-        @deaths = deaths
-    end
+
+def initialize(country_name)
+@name = country_name
+
+end
+
+
+
 
 
 end 
