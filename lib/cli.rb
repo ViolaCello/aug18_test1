@@ -32,6 +32,8 @@ puts "or type exit to exit, or list to list again."
         puts "China"
     when "list" 
         introduction
+    when "exit"
+        break 
     else
         puts "Not a valid entry.  Please try again."
         end
