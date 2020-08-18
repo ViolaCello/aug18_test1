@@ -13,6 +13,7 @@ Welcome to the Covid-19 country statistics comparer.
 7. Peru
 8. Turkey 
 LIST
+
     end
 
 def menu 
