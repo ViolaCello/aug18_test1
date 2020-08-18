@@ -6,12 +6,12 @@ class Api
     
 attr_accessor :country 
 
-def initialize(country)
-@country = country
-end
+#def initialize(country)
+#@country = country
+#end
 
 
-    def world_data
+    def self.world_data
     url = URI("https://covid-19-data.p.rapidapi.com/totals?format=json")
     
     http = Net::HTTP.new(url.host, url.port)
@@ -39,7 +39,8 @@ end
         request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
         
         response = http.request(request)
-        puts response.read_body
+         response.read_body
+        
     end
 
 def china_api
@@ -57,8 +58,8 @@ def china_api
     puts response.read_body
 end
 
-def country_api
-    string = self.country
+def self.country_api(country)
+    string = country
 
 address = "https://covid-19-data.p.rapidapi.com/country?format=json&name="+string 
 
@@ -73,7 +74,8 @@ request["x-rapidapi-host"] = 'covid-19-data.p.rapidapi.com'
 request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
 
 response = http.request(request)
-puts response.read_body
+raw_data = response.body
+raw_data
 end
 
 
