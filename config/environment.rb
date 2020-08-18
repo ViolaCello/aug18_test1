@@ -1,6 +1,6 @@
 require 'bundler'
 Bundler.require
 
-require "./lib/api.rb"
+require "./lib/api"
 require "./lib/cli"
-require "./lib/events.rb"
+require "./lib/events"
