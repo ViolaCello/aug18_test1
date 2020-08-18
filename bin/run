@@ -2,4 +2,4 @@
 
 require_relative '../config/environment'
 
-CLi.new.introduction 
+# CLi.new.introduction 

@@ -1,3 +1,1 @@
-introduction
-
-menu
+Cli.new.introduction 
