@@ -2,7 +2,7 @@ require 'pry'
 
     
     def introduction
-puts <<-MENU
+puts <<-LIST
 Welcome to the Covid-19 country statistics comparer.
 1. Australia
 2. China
@@ -12,12 +12,31 @@ Welcome to the Covid-19 country statistics comparer.
 6. Mexico
 7. Peru
 8. Turkey 
-Please type the number of the country that you'd like to compare to the World Statistics, or type exit to exit, or list to list again.
-MENU
+LIST
     end
 
+def menu 
+    
+    input = nil
+    while input !="exit" do 
 
-introduction 
+puts "Please type the number of the country that you'd like to compare to the World Statistics,"
+puts "or type exit to exit, or list to list again."
+
+    input = gets.strip.downcase
+    case input
+    when "1"
+        puts "Australia"
+    when "2" 
+        puts "China"
+    when "list" 
+        introduction
+    else
+        puts "Not a valid entry.  Please try again."
+        end
+    end
+end
 
 
 
+menu 
