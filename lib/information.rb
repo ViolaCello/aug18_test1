@@ -1,5 +1,5 @@
 class Information 
 
-Cli.new.introduction 
+# Cli.new.introduction 
 
 end 
