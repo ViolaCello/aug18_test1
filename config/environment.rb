@@ -3,4 +3,4 @@ Bundler.require
 
 require "./lib/api"
 require "./lib/cli"
-require "./lib/events"
+require "./lib/information"

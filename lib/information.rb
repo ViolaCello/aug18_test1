@@ -1,4 +1,4 @@
-class Events 
+class Information 
 
 Cli.new.introduction 
 
