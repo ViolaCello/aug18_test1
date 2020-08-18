@@ -1,5 +1,5 @@
 require 'pry'
-
+class Cli 
     
     def introduction
 puts <<-LIST
@@ -41,3 +41,4 @@ end
 
 
 
+end 
