@@ -1,4 +1,5 @@
-require 'pry'
+
+
 class Cli 
     
 @@world = []
@@ -86,14 +87,7 @@ puts ""
         puts ""
         create =Api.new.country_api("Turkey")
         level_two_menu(create)
-    when "9"
-        puts ""
-        puts "World Statistics"
-        puts ""
-        
-       # create = Api.new.world_data
-       create = "World"
-         level_two_menu(create)
+   
     when "list" 
         introduction
     when "exit"
@@ -190,7 +184,7 @@ def level_two_menu(info)
             end 
     else
         puts ""
-        puts "Please type a number 1 through 4 or type exit."
+        puts "That is not a valid entry."
         puts ""
     end
     end #ends While
