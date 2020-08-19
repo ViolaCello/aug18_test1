@@ -12,4 +12,4 @@ def initialize(info)
     @@all.push(self)
 end
 
-end #ends Class
+end 

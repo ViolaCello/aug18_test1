@@ -4,12 +4,6 @@ class Api
     require 'net/http'
     require 'openssl'
     
-attr_accessor :country 
-
-def initialize
-
-end
-
 
     def self.world_data
     url = URI("https://covid-19-data.p.rapidapi.com/totals?format=json")
