@@ -5,7 +5,7 @@ class Api
     require 'openssl'
     
 
-    def self.world_data
+    def world_data
     url = URI("https://covid-19-data.p.rapidapi.com/totals?format=json")
     
     http = Net::HTTP.new(url.host, url.port)
@@ -18,13 +18,31 @@ class Api
     
     response = http.request(request)
    # puts response.read_body
+   raw_data = response.body
+   #convert API response into a usable hash
+   temp_array = []
+       info_hash ={}
+       info_hash["country"] = "World"
+       conversion = raw_data.split(",")
+       conversion.each do |i|
+         i.delete!('"')
+         i.delete!('[')
+         i.delete!(']')
+         i.delete!('{')
+         i.delete!('}')
+         temp_array.push(i)
+       end
+       temp_array.each do |i|
+         d = i.split(":")
+       info_hash[d[0]] = d[1]
+       end
+   
+   #return the info hash to then do the next step, which is to create country called World
+      info_hash
 
     end
 
     
-
-
-#get country api 
 def country_api(country)
     string = country
 

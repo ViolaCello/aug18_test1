@@ -80,7 +80,7 @@ puts ""
         puts ""
         puts "World Statistics"
         puts ""
-        create = Api.new.world_data("World")
+        create = Api.new.world_data
         level_two_menu(create)
     when "list" 
         introduction
