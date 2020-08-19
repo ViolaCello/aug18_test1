@@ -6,8 +6,8 @@ class Api
     
 attr_accessor :country 
 
-def initialize(country)
-@country = country
+def initialize
+
 end
 
 
