@@ -58,7 +58,10 @@ def china_api
     puts response.read_body
 end
 
-def self.country_api(country)
+
+
+#get country api 
+def country_api(country)
     string = country
 
 address = "https://covid-19-data.p.rapidapi.com/country?format=json&name="+string 
@@ -75,7 +78,27 @@ request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
 
 response = http.request(request)
 raw_data = response.body
-raw_data
+#convert API response into a usable hash
+temp_array = []
+    info_hash = {}
+    conversion = raw_data.split(",")
+    conversion.each do |i|
+      i.delete!('"')
+      i.delete!('[')
+      i.delete!(']')
+      i.delete!('{')
+      i.delete!('}')
+      temp_array.push(i)
+    end
+    temp_array.each do |i|
+      d = i.split(":")
+    info_hash[d[0]] = d[1]
+    end
+
+#return the info hash to then do the next step, which is create new country
+   info_hash
+    
+
 end
 
 

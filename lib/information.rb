@@ -13,7 +13,7 @@ def run
 end
 
 def create_country_info
-    
+end
 
 def parse_info
     #put raw_data into a hash form
@@ -34,18 +34,11 @@ def parse_info
     end
 
 
+    new_hash
     
-    
 
 end
 
-def return_level_one
-
-end
-
-def return_level_two
-
-end
 
 
 
