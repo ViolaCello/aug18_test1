@@ -3,7 +3,7 @@ class Cli
     
     def introduction
 puts <<-LIST
-Welcome to the Covid-19 country statistics comparer.
+Welcome to the Covid-19 country statistics information.
 
 1. Australia
 2. China
