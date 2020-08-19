@@ -36,31 +36,31 @@ puts "or type exit to exit, or list to list again."
         level_two_menu(create)
     when "3"
         puts "Cuba"
-        create =Api.new("Cuba").country_api
+        create =Api.new.country_api("Cuba")
         level_two_menu(create)
     when "4"
         puts "Italy"
-        create =Api.new("Italy").country_api
+        create =Api.new.country_api("Italy")
         level_two_menu(create)
     when "5"
         puts "Kenya"
-        create =Api.new("Kenya").country_api
+        create =Api.new.country_api("Kenya")
         level_two_menu(create)
     when "6"
         puts "Mexico"
-        create = Api.new("Mexico").country_api
+        create = Api.new.country_api("Mexico")
         level_two_menu(create)
     when "7" 
         puts "Peru"
-        create = Api.new("Peru").country_api
+        create = Api.new.country_api("Peru")
         level_two_menu(create)
     when "8"
         puts "Turkey"
-        create =Api.new("Turkey").country_api
+        create =Api.new.country_api("Turkey")
         level_two_menu(create)
     when "9"
         puts "World Statistics"
-        create = Api.new("World").world_data
+        create = Api.new.world_data("World")
         level_two_menu(create)
     when "list" 
         introduction
