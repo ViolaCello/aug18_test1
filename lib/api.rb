@@ -6,9 +6,9 @@ class Api
     
 attr_accessor :country 
 
-#def initialize(country)
-#@country = country
-#end
+def initialize(country)
+@country = country
+end
 
 
     def self.world_data
