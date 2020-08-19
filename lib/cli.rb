@@ -32,7 +32,7 @@ puts "or type exit to exit, or list to list again."
        level_two_menu(create)
     when "2" 
         puts "China"
-        create = Api.new("China").country_api
+        create = Api.new.country_api("China")
         level_two_menu(create)
     when "3"
         puts "Cuba"
