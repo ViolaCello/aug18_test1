@@ -3,7 +3,7 @@
 class Cli 
     
 @@world = []
-@@fun = []
+
 def run 
     info = Api.new.world_data
     @@world = Country.new(info)
