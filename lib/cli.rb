@@ -28,7 +28,7 @@ puts "or type exit to exit, or list to list again."
     case input
     when "1"
         puts "Australia"
-       create = Api.new("Australia").country_api
+       create = Api.new("Australia").country_api("Australia")
        level_two_menu(create)
     when "2" 
         puts "China"
