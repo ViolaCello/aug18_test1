@@ -1,6 +1,15 @@
 require 'pry'
 class Cli 
     
+@@world = []
+
+def run 
+    info = Api.new.world_data
+    @@world = Country.new(info)
+introduction
+end
+
+
     def introduction
 puts <<-LIST
 Welcome to the Covid-19 country statistics information.
@@ -80,8 +89,10 @@ puts ""
         puts ""
         puts "World Statistics"
         puts ""
-        create = Api.new.world_data
-        level_two_menu(create)
+        
+       # create = Api.new.world_data
+       create = "World"
+         level_two_menu(create)
     when "list" 
         introduction
     when "exit"
@@ -95,7 +106,11 @@ puts ""
 end
 
 def level_two_menu(info)
+    if info = "World"
+        stats = @@world
+    else
     stats = Country.new(info)
+    end
 
     input = nil
     while input !="exit" do 
@@ -117,15 +132,15 @@ def level_two_menu(info)
         puts ""
     when "2"
         puts ""
-        puts "#{stats.country} has #{stats.recovered} recovered cases."  
+        puts "#{stats.country} has #{stats.recovered} recovered cases.  Info last updated: #{stats.last_update}."  
         puts ""
     when "3"
         puts ""
-        puts "#{stats.country} has #{stats.critical} critical cases."
+        puts "#{stats.country} has #{stats.critical} critical cases.  Info last updated: #{stats.last_update}."
         puts ""
     when "4"
         puts ""
-        puts "#{stats.country} has #{stats.deaths} deaths."
+        puts "#{stats.country} has #{stats.deaths} deaths.  Info last updated: #{stats.last_update}."
         puts ""
     else
         puts ""

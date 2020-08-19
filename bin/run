@@ -2,5 +2,5 @@
 
 require_relative '../config/environment'
 
- Cli.new.introduction 
+ Cli.new.run
 # Api.new.country_hash
