@@ -113,7 +113,7 @@ def level_two_menu(info)
     case input
     when "1"
         puts ""
-        puts "#{stats.country} has #{stats.confirmed} confirmed cases."
+        puts "#{stats.country} has #{stats.confirmed} confirmed cases. Info last updated: #{stats.last_update}."
         puts ""
     when "2"
         puts ""
