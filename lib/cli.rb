@@ -12,7 +12,8 @@ end
 
     def introduction
 puts <<-LIST
-Welcome to the Covid-19 country statistics information.
+
+Welcome to the Covid-19 country statistics information, where you also have the option to compare the statistics of a country to the world statistics.
 
 1. Australia
 2. China
@@ -22,7 +23,7 @@ Welcome to the Covid-19 country statistics information.
 6. Mexico
 7. Peru
 8. Turkey 
-9. World Totals
+
 LIST
 menu
     end
@@ -106,11 +107,8 @@ puts ""
 end
 
 def level_two_menu(info)
-    if info = "World"
-        stats = @@world
-    else
+  
     stats = Country.new(info)
-    end
 
     input = nil
     while input !="exit" do 
@@ -130,18 +128,66 @@ def level_two_menu(info)
         puts ""
         puts "#{stats.country} has #{stats.confirmed} confirmed cases. Info last updated: #{stats.last_update}."
         puts ""
+        puts "Would you like to compare this to the World Statistics? (y/n)"
+        compare = gets.strip.downcase
+        if compare == "y"
+        puts ""
+        puts "There are #{@@world.confirmed} confirmed cases in the world."
+        local = (stats.confirmed).to_f
+        world = (@@world.confirmed).to_f
+        percent = (100 * (local / world))
+        puts ""
+        puts "#{stats.country} has #{percent}% of the confirmed cases in the world."
+        puts ""
+        end 
     when "2"
         puts ""
         puts "#{stats.country} has #{stats.recovered} recovered cases.  Info last updated: #{stats.last_update}."  
         puts ""
+        puts "Would you like to compare this to the World Statistics? (y/n)"
+        compare = gets.strip.downcase
+        if compare == "y"
+            puts ""
+            puts "There are #{@@world.recovered} recovered cases in the world."
+            local = (stats.recovered).to_f
+            world = (@@world.recovered).to_f
+            percent = (100 * (local / world))
+            puts ""
+            puts "#{stats.country} has #{percent}% of the recovered cases in the world."
+            puts ""
+            end 
     when "3"
         puts ""
         puts "#{stats.country} has #{stats.critical} critical cases.  Info last updated: #{stats.last_update}."
         puts ""
+        puts "Would you like to compare this to the World Statistics? (y/n)"
+        compare = gets.strip.downcase
+        if compare == "y"
+            puts ""
+            puts "There are #{@@world.critical} critical cases in the world."
+            local = (stats.critical).to_f
+            world = (@@world.critical).to_f
+            percent = (100 * (local / world))
+            puts ""
+            puts "#{stats.country} has #{percent}% of the critical cases in the world."
+            puts ""
+            end 
     when "4"
         puts ""
         puts "#{stats.country} has #{stats.deaths} deaths.  Info last updated: #{stats.last_update}."
         puts ""
+        puts "Would you like to compare this to the World Statistics? (y/n)"
+        compare = gets.strip.downcase
+        if compare == "y"
+            puts ""
+            puts "There are #{@@world.deaths} Covid-19 deaths in the world."
+            local = (stats.deaths).to_f
+            world = (@@world.deaths).to_f
+            percent = (100 * (local / world))
+            puts ""
+            puts "#{stats.country} has #{percent}% of the Covid-19 deaths in the world."
+            puts ""
+            end 
     else
         puts ""
         puts "Please type a number 1 through 4 or type exit."
@@ -150,7 +196,5 @@ def level_two_menu(info)
     end #ends While
     introduction
 end # ends DEF Level2Menu 
-
-
 
 end 
