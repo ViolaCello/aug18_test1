@@ -1,4 +1,4 @@
-require 'pry'
+
 class Api
     
     
@@ -75,7 +75,7 @@ temp_array = []
     info_hash[d[0]] = d[1]
     end
 
-#return the info hash to then do the next step, which is create new country
+#now that we have a usable hash of information, let's create new country
 #binding.pry
 Country.new(info_hash) 
 end

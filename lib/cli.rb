@@ -1,4 +1,4 @@
-
+# This class is no longer valid.  Additions were made experimentally to the CliProject Class which worked, so this is no longer valid.
 
 class Cli 
     

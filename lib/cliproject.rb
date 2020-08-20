@@ -4,9 +4,10 @@ class CliProject
 
 
 def run 
+    # Load the World Statistics so that they are immediately available for comparisons. 
     info = Api.new.world_data
-    @@world = Country.new(info)
-introduction
+    @@world = Country.new(info) # Save it into the CLI Class so that it's always at the ready
+    introduction # go to the #introduction to welcome the user
 end
 
 
@@ -25,7 +26,7 @@ Welcome to the Covid-19 country statistics information, where you also have the 
 8. Turkey 
 
 LIST
-menu
+menu # go to the Menu to prompt the user as to what they may want to do
     end
 
 def menu 
@@ -99,9 +100,9 @@ puts ""
     end
 end
 
-def level_two_menu(info)
-  
-     stats = info
+def level_two_menu(stats)
+
+    #stats is the Country instance that we're currently working on, whether it was newly created or existed already
 
     input = nil
     while input !="exit" do 
@@ -121,101 +122,110 @@ def level_two_menu(info)
         puts ""
         puts "#{stats.country} has #{stats.confirmed} confirmed cases. Info last updated: #{stats.last_update}."
         puts ""
-        puts "Would you like to compare this to the World Statistics? (y/n)"
-        compare = gets.strip.downcase
-        if compare =="y"
-        puts ""
-        puts "There are #{@@world.confirmed} confirmed cases in the world."
-        local = (stats.confirmed).to_f
-        world = (@@world.confirmed).to_f
-        percent = (100 * (local / world))
-        puts ""
-        puts "#{stats.country} has #{percent}% of the confirmed cases in the world."
-        puts ""
-        elsif compare == "n"
-            puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
-        else
-            puts "That was not a vaild response.  Returning you to the statistics menu for #{stats.country}"
-    end  
+        comparison(stats, input)
+
+        # The camparison method is now responsible for generating the next level menu.  This saves computer memory.
+       
+        # This is how each of the 4 When statements would have continued:
+
+        # puts "Would you like to compare this to the World Statistics? (y/n)"
+       # compare = gets.strip.downcase
+        #if compare =="y"
+       # puts ""
+        #puts "There are #{@@world.confirmed} confirmed cases in the world."
+       # local = (stats.confirmed).to_f
+       # world = (@@world.confirmed).to_f
+       # percent = (100 * (local / world))
+       # puts ""
+       # puts "#{stats.country} has #{percent}% of the confirmed cases in the world."
+       # puts ""
+       # elsif compare == "n"
+       #     puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
+       # else
+       #     puts "That was not a vaild response.  Returning you to the statistics menu for #{stats.country}"
+    #end  
+
     when "2"
         puts ""
         puts "#{stats.country} has #{stats.recovered} recovered cases.  Info last updated: #{stats.last_update}."  
         puts ""
-        puts "Would you like to compare this to the World Statistics? (y/n)"
-        compare = gets.strip.downcase
-        if compare == "y"
-            puts ""
-            puts "There are #{@@world.recovered} recovered cases in the world."
-            local = (stats.recovered).to_f
-            world = (@@world.recovered).to_f
-            percent = (100 * (local / world))
-            puts ""
-            puts "#{stats.country} has #{percent}% of the recovered cases in the world."
-            puts ""
-        elsif compare == "n"
-            puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
-        else
-            puts "That was not a vaild response.  Returning you to the statistics menu for #{stats.country}"
-    end  
+        comparison(stats, input)
+        
     when "3"
         puts ""
         puts "#{stats.country} has #{stats.critical} critical cases.  Info last updated: #{stats.last_update}."
         puts ""
-        puts "Would you like to compare this to the World Statistics? (y/n)"
-        compare = gets.strip.downcase
-        if compare == "y"
-            puts ""
-            puts "There are #{@@world.critical} critical cases in the world."
-            local = (stats.critical).to_f
-            world = (@@world.critical).to_f
-            percent = (100 * (local / world))
-            puts ""
-            puts "#{stats.country} has #{percent}% of the critical cases in the world."
-            puts ""
-        elsif compare == "n"
-            puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
-        else
-            puts "That was not a vaild response.  Returning you to the statistics menu for #{stats.country}"
-    end  
+        comparison(stats, input)
+        
     when "4"
         puts ""
         puts "#{stats.country} has #{stats.deaths} deaths.  Info last updated: #{stats.last_update}."
         puts ""
-        puts "Would you like to compare this to the World Statistics? (y/n)"
-        compare = gets.strip.downcase
-        if compare == "y"
-            puts ""
-            puts "There are #{@@world.deaths} Covid-19 deaths in the world."
-            local = (stats.deaths).to_f
-            world = (@@world.deaths).to_f
-            percent = (100 * (local / world))
-            puts ""
-            puts "#{stats.country} has #{percent}% of the Covid-19 deaths in the world."
-            puts ""
-        elsif compare == "n"
-            puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
-        else
-            puts "That was not a vaild response.  Returning you to the statistics menu for #{stats.country}"
-    end  
-    else
-        puts ""
-        puts "That is not a valid entry."
-        puts ""
+        comparison(stats, input)
     end
+
     end #ends While
-    introduction
-end # ends DEF Level2Menu 
+
+    introduction # Go back to the main menu 
+
+end 
+
+
+def comparison(stats, choice)
+
+# bringing over the user's choice of what statistic they wanted and then setting the variable to match it here in this method
+# avoids having to retype the contents of the Loop for each type of statistic. Set it once then let it happen on its own.
+
+if choice == "1" 
+    local = stats.confirmed
+    world = @@world.confirmed
+elsif choice == "2"
+    local = stats.recovered
+    world = @@world.recovered
+elsif choice == "3"
+    local = stats.critical
+    world = @@world.critical
+else
+    local = stats.deaths
+    world = @@world.deaths
+end
+
+    compare = nil
+    loop do  # The Loop is mainly in case User enters something other than y or n 
+    puts "Would you like to compare this to the World Statistics? (y/n)"
+    compare = gets.strip.downcase
+    if compare =="y"
+    puts ""
+    puts "There are #{world} confirmed cases in the world."
+    local_math = local.to_f
+    world_math = world.to_f
+    percent = (100 * (local_math / world_math))
+    puts ""
+    puts "#{stats.country} has #{percent}% of the confirmed cases in the world."
+    puts ""
+    break # since there is no need to ask to display the same information again, end the Loop Do here
+  
+    elsif compare == "n"
+        puts "Ok, I will return you to the menu for the statistics for #{stats.country}."
+        level_two_menu(stats)
+       else
+        puts "That was not a valid response."
+        end  
+    end
+end 
+
 
 
 def find_or_create(choice)
-   # binding.pry
+    # This method avoids re-creating countries that already exist, thus saving computer and system memory
+ 
 find = Country.all.detect{|o| o.country == choice}
 if find == nil
     create = Api.new.country_api(choice)
     level_two_menu(create)
 else
-    level_two_menu(choice)
-end
+     level_two_menu(find)
+    end
 end
 
 
