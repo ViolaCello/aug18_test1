@@ -1,8 +1,7 @@
-
-
-class Cli 
+class CliProject
     
 @@world = []
+
 
 def run 
     info = Api.new.world_data
@@ -43,50 +42,50 @@ puts ""
         puts ""
         puts "Australia"
         puts ""
-       create = Api.new.country_api("Australia")
-       level_two_menu(create)
+        choice = "Australia"
+       find_or_create(choice)
     when "2" 
         puts ""
         puts "China"
         puts ""
-        create = Api.new.country_api("China")
-        level_two_menu(create)
+        choice = "China"
+        find_or_create(choice)
     when "3"
         puts ""
         puts "Cuba"
         puts ""
-        create =Api.new.country_api("Cuba")
-        level_two_menu(create)
+        choice = "Cuba"
+        find_or_create(choice)
     when "4"
         puts ""
         puts "Italy"
         puts ""
-        create =Api.new.country_api("Italy")
-        level_two_menu(create)
+        choice = "Italy"
+        find_or_create(choice)
     when "5"
         puts ""
         puts "Kenya"
         puts ""
-        create =Api.new.country_api("Kenya")
-        level_two_menu(create)
+        choice = "Kenya"
+        find_or_create(choice)
     when "6"
         puts ""
         puts "Mexico"
         puts ""
-        create = Api.new.country_api("Mexico")
-        level_two_menu(create)
+        choice = "Mexico"
+        find_or_create(choice)
     when "7" 
         puts ""
         puts "Peru"
         puts ""
-        create = Api.new.country_api("Peru")
-        level_two_menu(create)
+        choice = "Peru"
+        find_or_create(choice)
     when "8"
         puts ""
         puts "Turkey"
         puts ""
-        create =Api.new.country_api("Turkey")
-        level_two_menu(create)
+        choice = "Turkey"
+        find_or_create(choice)
    
     when "list" 
         introduction
@@ -102,7 +101,7 @@ end
 
 def level_two_menu(info)
   
-    stats = Country.new(info)
+     stats = info
 
     input = nil
     while input !="exit" do 
@@ -206,5 +205,18 @@ def level_two_menu(info)
     end #ends While
     introduction
 end # ends DEF Level2Menu 
+
+
+def find_or_create(choice)
+   # binding.pry
+find = Country.all.detect{|o| o.country == choice}
+if find == nil
+    create = Api.new.country_api(choice)
+    level_two_menu(create)
+else
+    level_two_menu(choice)
+end
+end
+
 
 end 

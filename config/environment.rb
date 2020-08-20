@@ -2,7 +2,7 @@ require 'bundler'
 Bundler.require
 
 require "./lib/api"
-require "./lib/cli"
+require "./lib/cliproject"
 require "./lib/country"
 require 'uri'
     require 'net/http'

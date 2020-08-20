@@ -76,7 +76,8 @@ temp_array = []
     end
 
 #return the info hash to then do the next step, which is create new country
-   info_hash
+#binding.pry
+Country.new(info_hash) 
 end
 
 
