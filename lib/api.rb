@@ -14,6 +14,8 @@ class Api
     request["x-rapidapi-host"] = 'covid-19-data.p.rapidapi.com'
     request["x-rapidapi-key"] = '08507dcb2dmsh734c7c4378428e1p116926jsn2b0915eb021b'
         
+# look at .env - its a Gem that hide API Key from freeloaders 
+
     response = http.request(request)
    # puts response.read_body
    raw_data = response.body

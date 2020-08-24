@@ -1,7 +1,7 @@
 class CliProject
     
 @@world = []
-
+@@country_choice = ["Australia", "China", "Cuba", "Italy", "Kenya", "Mexico", "Peru", "Turkey"]
 
 def run 
     # Load the World Statistics so that they are immediately available for comparisons. 
@@ -38,60 +38,73 @@ puts "or type exit to exit, or list to list again."
 puts ""
 
     input = gets.strip.downcase
-    case input
-    when "1"
-        puts ""
-        puts "Australia"
-        puts ""
-        choice = "Australia"
-       find_or_create(choice)
-    when "2" 
-        puts ""
-        puts "China"
-        puts ""
-        choice = "China"
-        find_or_create(choice)
-    when "3"
-        puts ""
-        puts "Cuba"
-        puts ""
-        choice = "Cuba"
-        find_or_create(choice)
-    when "4"
-        puts ""
-        puts "Italy"
-        puts ""
-        choice = "Italy"
-        find_or_create(choice)
-    when "5"
-        puts ""
-        puts "Kenya"
-        puts ""
-        choice = "Kenya"
-        find_or_create(choice)
-    when "6"
-        puts ""
-        puts "Mexico"
-        puts ""
-        choice = "Mexico"
-        find_or_create(choice)
-    when "7" 
-        puts ""
-        puts "Peru"
-        puts ""
-        choice = "Peru"
-        find_or_create(choice)
-    when "8"
-        puts ""
-        puts "Turkey"
-        puts ""
-        choice = "Turkey"
-        find_or_create(choice)
-   
-    when "list" 
+   # case input
+
+    if input == "list" 
         introduction
-    when "exit"
-        exit
+
+    elsif input == "exit"
+    exit
+elsif
+        input.to_i >= 1 && input.to_i <=8 
+        mod_input = input.to_i - 1
+            puts ""
+            choice = @@country_choice[mod_input]
+            puts choice 
+            puts ""
+            find_or_create(choice)
+
+
+    # when "1"
+    #     puts ""
+    #     puts "Australia"
+    #     puts ""
+    #     choice = "Australia"
+    #    find_or_create(choice)
+    # when "2" 
+    #     puts ""
+    #     puts "China"
+    #     puts ""
+    #     choice = "China"
+    #     find_or_create(choice)
+    # when "3"
+    #     puts ""
+    #     puts "Cuba"
+    #     puts ""
+    #     choice = "Cuba"
+    #     find_or_create(choice)
+    # when "4"
+    #     puts ""
+    #     puts "Italy"
+    #     puts ""
+    #     choice = "Italy"
+    #     find_or_create(choice)
+    # when "5"
+    #     puts ""
+    #     puts "Kenya"
+    #     puts ""
+    #     choice = "Kenya"
+    #     find_or_create(choice)
+    # when "6"
+    #     puts ""
+    #     puts "Mexico"
+    #     puts ""
+    #     choice = "Mexico"
+    #     find_or_create(choice)
+    # when "7" 
+    #     puts ""
+    #     puts "Peru"
+    #     puts ""
+    #     choice = "Peru"
+    #     find_or_create(choice)
+    # when "8"
+    #     puts ""
+    #     puts "Turkey"
+    #     puts ""
+    #     choice = "Turkey"
+    #     find_or_create(choice)
+   
+      
     else
         puts ""
         puts "Not a valid entry.  Please try again."
