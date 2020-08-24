@@ -1,8 +1,8 @@
 # Aug18Test1
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/aug18_test1`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the Covid-19 live statistics tracker.
 
-TODO: Delete this and the text above, and describe your gem
+In this project, a user is able to choose from a list of eight countries from different regions around the world.  Once a choice is made, the user is prompted as to which statistic about the country they would like to know concerning Covid-19.  The choices are: Confirmed case, Recovered cases, Critical cases, and the number of deaths.  Once the user has made the choice as to which statistic they wanted returned to them, they are then prompted with another choice as to whether they would care to compare the number that was just returned to them with the World statistics of the same category.  If the user answers in the affirmative, the gross number of the world statistic in question is displayed, and then a mathematical computation as to what percentage did this particular country add to the world's total.  The user can continue through and find information about any/all of teh eight countries provided.
 
 ## Installation
 
@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+type bin/run on the terminal command line
+
+Then follow the prompts that are presented to the user in a clear manner.
+
+To exit, type exit by returning to the main menu and typing exit at the prompt.
 
 ## Development
 
