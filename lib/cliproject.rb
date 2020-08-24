@@ -179,15 +179,19 @@ def comparison(stats, choice)
 if choice == "1" 
     local = stats.confirmed
     world = @@world.confirmed
+    type = "confirmed cases"
 elsif choice == "2"
     local = stats.recovered
     world = @@world.recovered
+    type = "recovered cases"
 elsif choice == "3"
     local = stats.critical
     world = @@world.critical
+    type = "critical cases"
 else
     local = stats.deaths
     world = @@world.deaths
+    type = "Covid deaths"
 end
 
     compare = nil
@@ -196,12 +200,12 @@ end
     compare = gets.strip.downcase
     if compare =="y"
     puts ""
-    puts "There are #{world} confirmed cases in the world."
+    puts "There are #{world} #{type} in the world."
     local_math = local.to_f
     world_math = world.to_f
     percent = (100 * (local_math / world_math))
     puts ""
-    puts "#{stats.country} has #{percent}% of the confirmed cases in the world."
+    puts "#{stats.country} has #{percent}% of the #{type} in the world."
     puts ""
     break # since there is no need to ask to display the same information again, end the Loop Do here
   
